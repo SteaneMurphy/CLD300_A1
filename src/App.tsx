@@ -1,13 +1,15 @@
-import Header from './components/header/header.tsx'
+import Header from './components/header/header.tsx';
+import Hero from './components/hero/hero.tsx';
 
 function App() {
 
   return (
     <>
       <Header />
+      <Hero />
       {/* 
       <FlightSearchBar />
-      <Hero />
+      
       <TrustPilot />
       <Promotional />
       <Promotional />
