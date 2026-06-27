@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import Header from './components/header/header.tsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      {/* <Header />
-      <SearchBar />
+      <Header />
+      {/* 
+      <FlightSearchBar />
       <Hero />
       <TrustPilot />
       <Promotional />
