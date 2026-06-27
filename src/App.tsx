@@ -1,5 +1,6 @@
 import Header from './components/header/header.tsx';
 import Hero from './components/hero/hero.tsx';
+import TrustPilot from './components/misc/trustPilot.tsx';
 
 function App() {
 
@@ -7,10 +8,11 @@ function App() {
     <>
       <Header />
       <Hero />
+      <TrustPilot />
       {/* 
       <FlightSearchBar />
       
-      <TrustPilot />
+      
       <Promotional />
       <Promotional />
       <Promotional />

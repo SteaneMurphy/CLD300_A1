@@ -24,6 +24,11 @@ import heroQueensland from '../assets/heroQueensland.jpg';
 import heroNewZealand from '../assets/heroNewZealand.jpg';
 import heroPackages from '../assets/heroPackages.jpg';
 import heroWorld360 from '../assets/heroWorld360.jpg';
+
+//trust pilot
+import trustPilotStars from '../assets/trustPilotStars.svg';
+import trustPilotLogo from '../assets/trustPilotLogo.svg';
+
 export interface LinkFormat 
 {
     text: string;
@@ -148,3 +153,18 @@ export const HeroOverlays: OverlayFormat[] =
         overlay: overlayWorld360
     }
 ]
+
+export interface StandAloneImageFormat
+{
+    path: string;
+}
+
+export const TrustPilotStars: StandAloneImageFormat = 
+{
+    path: trustPilotStars
+}
+
+export const TrustPilotLogo: StandAloneImageFormat = 
+{
+    path: trustPilotLogo
+}
