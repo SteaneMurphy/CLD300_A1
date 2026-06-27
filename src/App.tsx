@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import Header from './components/header/header.tsx';
 import Hero from './components/hero/hero.tsx';
 import TrustPilot from './components/misc/trustPilot.tsx';

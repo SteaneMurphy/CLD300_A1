@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Divider, Link, Typography } from "@mui/material";
+import { Box, Container, Divider, Link, Typography } from "@mui/material";
 import smallLogo from '../../assets/smallLogo.svg';
 import { 
     FooterHeadings,
@@ -15,6 +15,7 @@ function Footer ()
 {
     return(
         <Box>
+          <Container>
             {/* Footer Links */}
             <Box
                 sx={{
@@ -74,6 +75,7 @@ function Footer ()
             </Box>
 
             <Divider />
+          </Container>
         </Box>
     )
 }
