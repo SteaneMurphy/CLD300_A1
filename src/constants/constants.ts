@@ -25,9 +25,18 @@ import heroNewZealand from '../assets/heroNewZealand.jpg';
 import heroPackages from '../assets/heroPackages.jpg';
 import heroWorld360 from '../assets/heroWorld360.jpg';
 
-//trust pilot
+//stand-alone assets
 import trustPilotStars from '../assets/trustPilotStars.svg';
 import trustPilotLogo from '../assets/trustPilotLogo.svg';
+import iconFacebook from '../assets/iconFacebook.png';
+import iconGooglePlay from '../assets/iconGooglePlay.svg';
+import iconInstagram from '../assets/iconInstagram.png';
+import iconLinkedIn from '../assets/iconLinkedin.png';
+import iconPinterest from '../assets/iconPinterest.png';
+import iconTickTok from '../assets/iconTicktok.png';
+import iconYoutube from '../assets/iconYoutube.png';
+import iconAppleStore from '../assets/iconAppleStore.svg';
+import largeCaptainAvatar from '../assets/largeCaptainAvatar.png';
 
 export interface LinkFormat 
 {
@@ -168,3 +177,237 @@ export const TrustPilotLogo: StandAloneImageFormat =
 {
     path: trustPilotLogo
 }
+
+export const LargeCaptainAvatar: StandAloneImageFormat = 
+{
+    path: largeCaptainAvatar
+}
+
+export interface SocialMediaFormat 
+{
+    icon: string,
+    url?: string
+}
+
+export const IconFacebook: SocialMediaFormat = 
+{
+    icon: iconFacebook,
+    url: ""
+}
+
+export const IconAppleStore: SocialMediaFormat = 
+{
+    icon: iconAppleStore,
+    url: ""
+}
+
+export const IconGooglePlay: SocialMediaFormat = 
+{
+    icon: iconGooglePlay,
+    url: ""
+}
+
+export const IconInstagram: SocialMediaFormat = 
+{
+    icon: iconInstagram,
+    url: ""
+}
+
+export const IconLinkedIn: SocialMediaFormat = 
+{
+    icon: iconLinkedIn,
+    url: ""
+}
+
+export const IconPinterest: SocialMediaFormat = 
+{
+    icon: iconPinterest,
+    url: ""
+}
+
+export const IconTickTok: SocialMediaFormat = 
+{
+    icon: iconTickTok,
+    url: ""
+}
+
+export const IconYoutube: SocialMediaFormat = 
+{
+    icon: iconYoutube,
+    url: ""
+}
+
+export const SocialMediaLinks: SocialMediaFormat[] =
+[
+    IconFacebook,
+    IconInstagram,
+    IconTickTok,
+    IconLinkedIn,
+    IconYoutube,
+    IconPinterest
+]
+
+export interface FooterHeadingsFormat
+{
+    text: string;
+}
+
+export const FooterHeadings: FooterHeadingsFormat[] = 
+[
+    {
+        text: "Site quick links"
+    },
+    {
+        text: "Company"
+    },
+    {
+        text: "Extras"
+    },
+    {
+        text: "Help & support"
+    },
+]
+
+export const FooterQuickLinks: LinkFormat[] = 
+[
+    {
+        text: "Flights",
+        url: ""
+    },
+    {
+        text: "Stays",
+        url: ""
+    },
+    {
+        text: "Holidays",
+        url: ""
+    },
+    {
+        text: "Car hire",
+        url: ""
+    },
+    {
+        text: "Tours",
+        url: ""
+    },
+    {
+        text: "Cruises",
+        url: ""
+    },
+    {
+        text: "Rail",
+        url: ""
+    },
+    {
+        text: "Business Travel",
+        url: ""
+    },
+    {
+        text: "Publications",
+        url: ""
+    },
+    {
+        text: "Travel Blog",
+        url: ""
+    },
+    {
+        text: "Deals",
+        url: ""
+    },
+]
+
+export const FooterCompanyLinks: LinkFormat[] = 
+[
+    {
+        text: "About us",
+        url: ""
+    },
+    {
+        text: "Corporate site",
+        url: ""
+    },
+    {
+        text: "Careers",
+        url: ""
+    },
+    {
+        text: "Flight Centre Foundation",
+        url: ""
+    },
+    {
+        text: "Advertising",
+        url: ""
+    },
+]
+
+export const FooterExtrasLinks: LinkFormat[] = 
+[
+    {
+        text: "Captain's Pack",
+        url: ""
+    },
+    {
+        text: "Gift cards",
+        url: ""
+    },
+    {
+        text: "Holiday finance",
+        url: ""
+    },
+    {
+        text: "Insurance",
+        url: ""
+    },
+    {
+        text: "Online Captain's Pack",
+        url: ""
+    },
+    {
+        text: "Travel eSIM",
+        url: ""
+    },
+    {
+        text: "World360 Rewards",
+        url: ""
+    },
+    {
+        text: "Subscribe",
+        url: ""
+    },
+]
+
+export const FooterHelpSupportLinks: LinkFormat[] = 
+[
+    {
+        text: "Help centre",
+        url: ""
+    },
+    {
+        text: "Contact us",
+        url: ""
+    },
+    {
+        text: "Store finder",
+        url: ""
+    },
+    {
+        text: "Privacy",
+        url: ""
+    },
+    {
+        text: "Cookies",
+        url: ""
+    },
+    {
+        text: "Insurance claim process",
+        url: ""
+    },
+]
+
+export const FooterCategories = 
+[
+    FooterQuickLinks,
+    FooterCompanyLinks,
+    FooterExtrasLinks,
+    FooterHelpSupportLinks
+]
