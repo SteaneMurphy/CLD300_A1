@@ -38,6 +38,14 @@ import iconYoutube from '../assets/iconYoutube.png';
 import iconAppleStore from '../assets/iconAppleStore.svg';
 import largeCaptainAvatar from '../assets/largeCaptainAvatar.png';
 
+//promotional
+import promotionalBali from '../assets/promotionalBali.webp';
+import promotionalBrisbane from '../assets/promotionalBrisbane.webp';
+import promotionalMelbourne from '../assets/promotionalMelbourne.webp';
+import promotionalPerth from '../assets/promotionalPerth.webp';
+import promotionalSydney from '../assets/promotionalSydney.webp';
+import promotionalTokyo from '../assets/promotionalTokyo.webp';
+
 export interface LinkFormat 
 {
     text: string;
@@ -410,4 +418,59 @@ export const FooterCategories =
     FooterCompanyLinks,
     FooterExtrasLinks,
     FooterHelpSupportLinks
+]
+
+export interface PromotionalFormat
+{
+    path: string,
+    url: string,
+    price: number,
+    route: string,
+    quality: string
+}
+
+export const PromotionalFlightDeals: PromotionalFormat[] = 
+[
+    {
+        path: promotionalBali,
+        url: "",
+        price: 1153,
+        route: "cairns to bali",
+        quality: "economy class"
+    },
+    {
+        path: promotionalBrisbane,
+        url: "",
+        price: 202,
+        route: "cairns to brisbane",
+        quality: "economy class"
+    },
+    {
+        path: promotionalMelbourne,
+        url: "",
+        price: 277,
+        route: "cairns to melbourne",
+        quality: "economy class"
+    },
+    {
+        path: promotionalPerth,
+        url: "",
+        price: 721,
+        route: "cairns to perth",
+        quality: "economy class"
+    },
+    {
+        path: promotionalSydney,
+        url: "",
+        price: 232,
+        route: "cairns to sydney",
+        quality: "economy class"
+    },
+    {
+        path: promotionalTokyo,
+        url: "",
+        price: 1852,
+        route: "cairns to tokyo",
+        quality: "economy class"
+    },
 ]
