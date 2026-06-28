@@ -43,7 +43,7 @@ function FlightSearchBar ()
     return (
         <Container sx={{ position: 'relative', zIndex: 2 }}>
             <Box sx={{ ...cardSurface, p: { xs: 2, md: 3 } }}>
-                
+
                 {/* Top options row */}
                 <Stack
                     direction="row"
@@ -90,7 +90,7 @@ function FlightSearchBar ()
                     spacing={2}
                     sx={{ alignItems: 'stretch' }}
                 >
-                    {/* Input pill */}
+                    {/* Input */}
                     <Stack
                         direction={{ xs: 'column', sm: 'row' }}
                         sx={{

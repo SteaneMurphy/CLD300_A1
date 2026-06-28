@@ -1,14 +1,14 @@
 //React
 import { useRef } from "react";
 //MUI
-import { Box, Typography, IconButton, Container } from "@mui/material";
+import { Box, Typography, IconButton, Container, Link } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 //components
 import Disclaimer from "../misc/disclaimer";
 import PriceTicker from "../misc/priceTicker";
 //assets
-import { PromotionalFlightDeals } from "../../constants/constants";
+import type { PromotionalFormat } from "../../constants/constants";
 //theme components
 import { flexBetween, flexAlignCenter, carouselButton } from "../../theme/theme";
 
@@ -26,7 +26,11 @@ import { flexBetween, flexAlignCenter, carouselButton } from "../../theme/theme"
 interface PromotionalProps
 {
     heading: string,
-    disclaimer: boolean
+    disclaimer: boolean,
+    content: PromotionalFormat[],
+    longForm?: boolean,
+    porthole?: boolean,
+    priceTicker?: boolean
 }
 
 const CARD_GAP = 16;
@@ -42,7 +46,7 @@ const CARD_GAP = 16;
 
     The cateogry heading is sent in as a prop from an object resource (constants.ts).
 */
-function Promotional ({ heading, disclaimer }: PromotionalProps)
+function Promotional ({ heading, disclaimer, content, longForm, porthole, priceTicker }: PromotionalProps)
 {
     const trackRef = useRef<HTMLDivElement>(null);
 
@@ -50,9 +54,14 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
     {
         const track = trackRef.current;
         if (!track) return;
-        // Measure the rendered card width so paging stays correct at any
-        // screen size, then page by the number of whole cards on screen so
-        // no partially-clipped card is ever left visible.
+        /*
+            This code takes the current indexed cards width and calculates the offset so that it fits
+            inside the carousel correctly. This tells the carousel how far to scroll so that the component cards
+            line up correctly and don't overlap the edges.
+
+            It works by taking the card width and hardcoded 'CARD_GAP' to calulate the step required for one card.
+            The value calculated by the step calculation is used to then determine how many cards should be visible.
+        */
         const firstCard = track.firstElementChild as HTMLElement | null;
         const cardWidth = firstCard ? firstCard.offsetWidth : track.clientWidth;
         const step = cardWidth + CARD_GAP;
@@ -61,7 +70,13 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
 
         if (direction === "right")
         {
-            // At (or past) the end → loop back to the first card.
+            /*
+                If when the user clicks right, the 'maxScroll' variable is lower than the
+                current scrollLeft, the container has reached the last visible cards.
+
+                It then scrolls the cards back to the first-most card, otherwise it scrolls
+                by another step.
+            */
             if (track.scrollLeft >= maxScroll - 1)
             {
                 track.scrollTo({ left: 0, behavior: "smooth" });
@@ -71,7 +86,9 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
         }
         else
         {
-            // At the start → loop to the end.
+            /*
+                Same as above but in reverse when the user clicks the left button
+            */
             if (track.scrollLeft <= 1)
             {
                 track.scrollTo({ left: maxScroll, behavior: "smooth" });
@@ -83,7 +100,21 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
 
     /*
         The component contains use of multiple MUI components systems including
-        the built in arrow buttons (Chevron)
+        the built in arrow buttons (Chevron).
+
+        There is conditional rendering depending on what parameters were set to
+        true in the component when rendered.
+
+        - porthole: turns the card into a circle (not yet implemented)
+        - longForm: creates a long retangular card
+        - default: creates a standard sized card
+        - priceTicker: renders the PriceTicker component
+        - disclaimer: renders a disclaimer with given text
+
+        For example, when setting 'longForm' to true, the height of the card is
+        adjusted to 400px, and if the parameter 'priceTicker' is set to false, it
+        does not render the pricing components of this component. This is determined
+        by the '&&' operator which only renders the JSX following a truthy parameter.
     */
     return(
         <Box component="section" sx={{ py: 4 }}>
@@ -94,6 +125,21 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
                     </Typography>
 
                     <Box sx={{ ...flexAlignCenter, gap: 1 }}>
+                        <Link
+                            href="#"
+                            underline="always"
+                            sx={{
+                                mr: 1,
+                                fontWeight: 600,
+                                color: "text.primary",
+                                whiteSpace: "nowrap",
+                                textDecorationColor: (theme) => theme.palette.text.primary,
+                                "&:hover": { textDecorationColor: (theme) => theme.palette.text.primary },
+                            }}
+                        >
+                            See all
+                        </Link>
+
                         <IconButton
                             aria-label="Previous deals"
                             onClick={() => scroll("left")}
@@ -123,21 +169,21 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
                             scrollBehavior: "smooth",
                         }}
                     >
-                        {PromotionalFlightDeals.map((deal, index) => (
+                        {content.map((deal, index) => (
                     <Box
                         key={index}
                         sx={{
                             position: "relative",
                             borderRadius: 2,
                             overflow: "hidden",
-                            // Responsive: 1 card on mobile, 2 on small, 3 on
-                            // medium+, each sized so whole cards fill the row.
                             flex: {
                                 xs: "0 0 100%",
                                 sm: `0 0 calc((100% - ${CARD_GAP}px) / 2)`,
-                                md: `0 0 calc((100% - ${2 * CARD_GAP}px) / 3)`,
+                                md: longForm
+                                    ? `0 0 calc((100% - ${3 * CARD_GAP}px) / 4)`
+                                    : `0 0 calc((100% - ${2 * CARD_GAP}px) / 3)`,
                             },
-                            height: 160,
+                            height: longForm ? 400 : 160,
                             scrollSnapAlign: "start",
                         }}
                     >
@@ -148,6 +194,7 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
                             sx={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }}
                         />
 
+                        {priceTicker && (
                         <Box
                             sx={{
                                 position: "absolute",
@@ -189,6 +236,7 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
                                 <PriceTicker text={"PER PERSON"} label hAlign="left" />
                             </Box>
                         </Box>
+                        )}
 
                     </Box>
                         ))}

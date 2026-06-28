@@ -7,6 +7,8 @@ import FlightSearchBar from './components/flightSearchBar/flightSearchBar.tsx';
 import TrustPilot from './components/misc/trustPilot.tsx';
 import Footer from './components/footer/footer.tsx';
 import Promotional from './components/promotional/promotional.tsx';
+//assets
+import { PromotionalFlightDeals, PromotionalRecommended } from "./constants/constants.ts";
 
 
 
@@ -30,12 +32,21 @@ function App() {
             right: 0,
             zIndex: 3,
           }}
-        >
+        >                                                                             {/* Searchbar Positioning for overlap */}
           <FlightSearchBar />                                                         {/* Searchbar component */}
         </Box>
       </Box>
       <TrustPilot />                                                                  {/* TrustPilot component */}
-      <Promotional heading={"Hot flight deals for you!"} disclaimer={true} />         {/* Flight Deals promo component */}
+      <Promotional 
+        heading={"Hot flight deals for you!"} 
+        disclaimer={true} 
+        content={PromotionalFlightDeals}
+        priceTicker={true} />                                                         {/* Flight Deals promo component */}
+      <Promotional 
+        heading={"Deals recommended for you"} 
+        disclaimer={false} 
+        content={PromotionalRecommended}        
+        longForm={true} />                                                            {/* Recommended Deals promo component */}
       <Footer />
                                                                                       {/* Footer component */}
       {/*
@@ -44,7 +55,6 @@ function App() {
 
       <Promotional />               accomodation deals promo component
       <Promotional />               package holiday deals promo component
-      <Promotional />               recommended deals promo component
       <Promotional />               blog based promo component
       <Reviews />                   trust pilot review area component
       <Deal />                      FlightCentre reward deals component

@@ -9,7 +9,8 @@ import {
     SocialMediaLinks,
     IconGooglePlay,
     IconAppleStore,
-    LargeCaptainAvatar } from "../../constants/constants";
+    LargeCaptainAvatar, 
+    SmallLogo } from "../../constants/constants";
 import type { SocialMediaFormat } from "../../constants/constants";
 //theme components
 import { flexBetween, flexAlignCenter } from "../../theme/theme";
@@ -31,6 +32,9 @@ function Footer ()
     return(
         <Box component="footer" sx={{ bgcolor: "accent.main", py: { xs: 5, md: 7 } }}>
           <Container>
+            
+            {/* Footer Logo */}
+            <Box component="img" src={SmallLogo.path} sx={{ width: 150, paddingBottom: 5 }} />
 
             {/* Footer Links */}
             <FooterLinks headings={FooterHeadings} categories={FooterCategories} />

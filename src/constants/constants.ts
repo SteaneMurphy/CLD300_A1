@@ -7,7 +7,6 @@ import iconBus from '../assets/iconBus.png';
 import iconCar from '../assets/iconCar.png';
 import iconFlightStay from '../assets/iconFlightStay.png';
 import iconLuggageTag from '../assets/iconLuggageTag.png';
-import iconMobile from '../assets/iconMobile.png';
 import iconUmbrella from '../assets/iconUmbrella.png';
 import iconFlight from '../assets/iconFlight.png';
 
@@ -37,6 +36,7 @@ import iconTickTok from '../assets/iconTiktok.svg';
 import iconYoutube from '../assets/iconYoutube.png';
 import iconAppleStore from '../assets/iconAppleStore.svg';
 import largeCaptainAvatar from '../assets/largeCaptainAvatar.png';
+import smallLogo from '../assets/smallLogo.svg';
 
 //promotional
 import promotionalBali from '../assets/promotionalBali.webp';
@@ -45,7 +45,18 @@ import promotionalMelbourne from '../assets/promotionalMelbourne.webp';
 import promotionalPerth from '../assets/promotionalPerth.webp';
 import promotionalSydney from '../assets/promotionalSydney.webp';
 import promotionalTokyo from '../assets/promotionalTokyo.webp';
+import dealAsia from '../assets/dealAsia.jpg';
+import dealBonus from '../assets/dealBonus.jpg';
+import dealFiji from '../assets/dealFiji.jpg';
+import dealInternationalFlight from '../assets/dealInternationalFlight.jpg';
+import dealLuxury from '../assets/dealLuxury.jpg';
+import dealRewards from '../assets/dealRewards.jpg';
 
+
+
+/*
+    LINKS
+*/
 export interface LinkFormat 
 {
     text: string;
@@ -140,6 +151,11 @@ export const BottomHeaderContactLinks: LinkFormat[] =
     },
 ]
 
+
+
+/*
+    OVERLAYS
+*/
 export interface OverlayFormat
 {
     hero?: string;
@@ -170,6 +186,11 @@ export const HeroOverlays: OverlayFormat[] =
     }
 ]
 
+
+
+/*
+    STAND-ALONE ASSETS
+*/
 export interface StandAloneImageFormat
 {
     path: string;
@@ -190,6 +211,16 @@ export const LargeCaptainAvatar: StandAloneImageFormat =
     path: largeCaptainAvatar
 }
 
+export const SmallLogo: StandAloneImageFormat = 
+{
+    path: smallLogo
+}
+
+
+
+/*
+    SOCIAL MEDIA ASSETS
+*/
 export interface SocialMediaFormat 
 {
     icon: string,
@@ -254,6 +285,11 @@ export const SocialMediaLinks: SocialMediaFormat[] =
     IconPinterest
 ]
 
+
+
+/*
+    FOOTER
+*/
 export interface FooterHeadingsFormat
 {
     text: string;
@@ -419,13 +455,18 @@ export const FooterCategories =
     FooterHelpSupportLinks
 ]
 
+
+
+/*
+    PROMOTIONAL
+*/
 export interface PromotionalFormat
 {
     path: string,
     url: string,
-    price: number,
-    route: string,
-    quality: string
+    price?: number,
+    route?: string,
+    quality?: string
 }
 
 export const PromotionalFlightDeals: PromotionalFormat[] = 
@@ -471,5 +512,33 @@ export const PromotionalFlightDeals: PromotionalFormat[] =
         price: 1852,
         route: "cairns to tokyo",
         quality: "economy class"
+    },
+]
+
+export const PromotionalRecommended: PromotionalFormat[] = 
+[
+    {
+        path: dealAsia,
+        url: "",
+    },
+    {
+        path: dealBonus,
+        url: "",
+    },
+    {
+        path: dealFiji,
+        url: "",
+    },
+    {
+        path: dealInternationalFlight,
+        url: "",
+    },
+    {
+        path: dealLuxury,
+        url: "",
+    },
+    {
+        path: dealRewards,
+        url: "",
     },
 ]
