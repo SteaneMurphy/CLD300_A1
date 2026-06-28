@@ -22,9 +22,24 @@ import { flexAlignCenter } from "../../theme/theme";
 function HeaderLinks ({ links }: { links: LinkFormat[] })
 {
     return (
-        <Box sx={{ ...flexAlignCenter, gap: 3 }}>
+        <Box sx={{ ...flexAlignCenter, gap: 0 }}>
             {links.map((link: LinkFormat, index: number) =>
-                <Link key={index} href={link.url} color="inherit">
+                <Link
+                    key={index}
+                    href={link.url}
+                    color="inherit"
+                    sx={{
+                        ...flexAlignCenter,
+                        gap: 0.5,
+                        px: 2,
+                        py: 1.5,
+                        borderRadius: 1,
+                        textDecoration: "none",
+                        "&:hover": {
+                            backgroundColor: "primary.dark",
+                        },
+                    }}
+                >
                     {link.icon && (
                         <img src={link.icon} alt={`${link.text} icon`} height={20} />
                     )}

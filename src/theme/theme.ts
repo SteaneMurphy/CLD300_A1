@@ -34,7 +34,7 @@ const theme = createTheme({
     primary: {                                                                                           // Flight Centre red
       main: '#d40119',
       light: '#e3344a',
-      dark: '#a30013',
+      dark: '#ba0015',
       contrastText: '#ffffff',
     },
     secondary: {                                                                                         // Complementary navy

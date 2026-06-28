@@ -58,7 +58,6 @@ export const TopHeaderLinks: LinkFormat[] =
     {
         text: "Get the app",
         url: "",
-        icon: iconMobile
     },
     {
         text: "Get a quote",
