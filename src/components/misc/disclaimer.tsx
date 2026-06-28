@@ -1,10 +1,23 @@
+//MUI
 import { Box, Typography } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
-const DISCLAIMER_TEXT =
-    "Displayed fares exclude Online Booking Fee & Merchant Fee. Fees are applied once at checkout."
+interface DisclaimerFormat
+{
+    text: string;
+}
 
-function Disclaimer()
+
+
+/*
+    This component is a re-usable disclaimer component that can be popped into other components
+    when a disclaimer is required. The layout is standardised by the design system and simply needs
+    the disclaimer text sent in as a prop when populated.
+
+    For this assignment, the text was hardcoded, in production, this text would be pulled from a 
+    constants file linked to the specific promotion and populated automatically.
+*/
+function Disclaimer({text}: DisclaimerFormat)
 {
     return(
         <Box
@@ -19,8 +32,8 @@ function Disclaimer()
             }}
         >
             <InfoOutlinedIcon sx={{ fontSize: "1rem", mt: "1px" }} />
-            <Typography sx={{ fontSize: "0.75rem", lineHeight: 1.5 }}>
-                {DISCLAIMER_TEXT}
+            <Typography variant="body2">
+                {text}
             </Typography>
         </Box>
     )

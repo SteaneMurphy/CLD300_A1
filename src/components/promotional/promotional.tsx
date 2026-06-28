@@ -1,11 +1,28 @@
+//React
 import { useRef } from "react";
+//MUI
 import { Box, Typography, IconButton, Container } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+//components
 import Disclaimer from "../misc/disclaimer";
 import PriceTicker from "../misc/priceTicker";
+//assets
 import { PromotionalFlightDeals } from "../../constants/constants";
+//theme components
+import { flexBetween, flexAlignCenter, carouselButton } from "../../theme/theme";
 
+
+
+/*
+    Promotion component typing. This interface is intended to be extendable so that
+    it can be used in different formats for different layouts of content. For example,
+    the component is currently setup to display 'Flight Deals', but would include optional
+    props to allow for different content layouts.
+
+    The idea behind this design is to limit the creation of a component for each type of
+    promotional carousel on the site, and to re-use existing component design.
+*/
 interface PromotionalProps
 {
     heading: string,
@@ -14,6 +31,17 @@ interface PromotionalProps
 
 const CARD_GAP = 16;
 
+
+
+/*
+    This component is the main promotional carousel content display. It is designed to be
+    extendable and re-usable for different content layouts via the type 'PromotionalProps'.
+
+    The main feature of this component is the carousel which is incremented and decremented by two
+    buttons on the top-right.
+
+    The cateogry heading is sent in as a prop from an object resource (constants.ts).
+*/
 function Promotional ({ heading, disclaimer }: PromotionalProps)
 {
     const trackRef = useRef<HTMLDivElement>(null);
@@ -53,23 +81,23 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
         }
     };
 
+    /*
+        The component contains use of multiple MUI components systems including
+        the built in arrow buttons (Chevron)
+    */
     return(
         <Box component="section" sx={{ py: 4 }}>
             <Container>
-                <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: 2 }}>
+                <Box sx={{ ...flexBetween, mb: 2 }}>
                     <Typography variant="h3" component="h2">
                         {heading}
                     </Typography>
 
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <Box sx={{ ...flexAlignCenter, gap: 1 }}>
                         <IconButton
                             aria-label="Previous deals"
                             onClick={() => scroll("left")}
-                            sx={{
-                                bgcolor: "common.white",
-                                boxShadow: 2,
-                                "&:hover": { bgcolor: "common.white" },
-                            }}
+                            sx={carouselButton}
                         >
                             <ChevronLeftIcon />
                         </IconButton>
@@ -77,11 +105,7 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
                         <IconButton
                             aria-label="Next deals"
                             onClick={() => scroll("right")}
-                            sx={{
-                                bgcolor: "common.white",
-                                boxShadow: 2,
-                                "&:hover": { bgcolor: "common.white" },
-                            }}
+                            sx={carouselButton}
                         >
                             <ChevronRightIcon />
                         </IconButton>
@@ -137,34 +161,23 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
                             }}
                         >
                             <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mb: 1 }}>
-                                <Typography
-                                    variant="body1"
-                                    sx={{
-                                        display: "inline-block",
-                                        textTransform: "uppercase",
-                                        textAlign: "center",
-                                        bgcolor: "primary.main",
-                                        color: "primary.contrastText",
-                                        px: 1,
-                                        py: 0.25,
-                                    }}
-                                >
-                                    {deal.route}
-                                </Typography>
-                                <Typography
-                                    variant="body1"
-                                    sx={{
-                                        display: "inline-block",
-                                        textTransform: "uppercase",
-                                        textAlign: "center",
-                                        bgcolor: "primary.main",
-                                        color: "primary.contrastText",
-                                        px: 1,
-                                        py: 0.25,
-                                    }}
-                                >
-                                    {deal.quality}
-                                </Typography>
+                                {[deal.route, deal.quality].map((text, i) => (
+                                    <Typography
+                                        key={i}
+                                        variant="body1"
+                                        sx={{
+                                            display: "inline-block",
+                                            textTransform: "uppercase",
+                                            textAlign: "center",
+                                            bgcolor: "primary.main",
+                                            color: "primary.contrastText",
+                                            px: 1,
+                                            py: 0.25,
+                                        }}
+                                    >
+                                        {text}
+                                    </Typography>
+                                ))}
                             </Box>
 
                             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "stretch", flexWrap: "wrap", gap: 0.5 }}>
@@ -182,7 +195,7 @@ function Promotional ({ heading, disclaimer }: PromotionalProps)
                     </Box>
                 </Box>
 
-                {disclaimer && <Disclaimer />}
+                {disclaimer && <Disclaimer text={"Displayed fares exclude Online Booking Fee & Merchant Fee. Fees are applied once at checkout."} />}
             </Container>
         </Box>
     )

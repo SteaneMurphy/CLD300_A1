@@ -1,20 +1,19 @@
+//MUI
 import { Typography, Box } from "@mui/material"
+//assets
 import { TrustPilotStars, TrustPilotLogo } from "../../constants/constants"
+//theme components
+import { flexCenter } from "../../theme/theme"
 
+
+/*
+    This component is the TrustPilot marketing box below the hero component. It comprises of some icons and
+    simple typography components.
+*/
 function TrustPilot ()
 {
     return(
-        <Box
-            sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                gap: 1,
-                py: 2,
-                bgcolor: "accent.main",
-            }}
-        >
+        <Box sx={{ ...flexCenter, flexWrap: "wrap", gap: 1, py: 2, bgcolor: "accent.main" }}>
             <Typography sx={{ fontWeight: 700, fontSize: "0.9375rem", lineHeight: 1, color: "text.primary" }}>
                 Excellent
             </Typography>

@@ -1,4 +1,8 @@
+//MUI
 import { Box, Container, Divider, Link, Typography } from "@mui/material";
+//components
+import FooterLinks from "./footerLinks";
+//assets
 import {
     FooterHeadings,
     FooterCategories,
@@ -6,64 +10,34 @@ import {
     IconGooglePlay,
     IconAppleStore,
     LargeCaptainAvatar } from "../../constants/constants";
+import type { SocialMediaFormat } from "../../constants/constants";
+//theme components
+import { flexBetween, flexAlignCenter } from "../../theme/theme";
 
-import type { FooterHeadingsFormat, LinkFormat, SocialMediaFormat } from "../../constants/constants";
 
+
+/*
+    This component acts as the site footer. Similar to the 'header.tsx' component, it populates its
+    links via its subcomponent 'footerLinks.tsx'. Further explanation in that component.
+
+    The component also populates the social media and copyright informational as well. The 'map' function
+    is used to loop through an array of social media icons (url: blank). The MUI component used for this
+    is a 'Link' component with an attatched image set by 'href'.
+
+    The bottom text informational is just simple text, using the typography component.
+*/
 function Footer ()
 {
     return(
         <Box component="footer" sx={{ bgcolor: "accent.main", py: { xs: 5, md: 7 } }}>
           <Container>
-            {/* Footer Links */}
-            <Box
-                sx={{
-                    display: 'grid',
-                    gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
-                    gap: 4,
-                }}
-            >
-                {FooterHeadings.map((heading: FooterHeadingsFormat, index: number) => (
-                    <Box
-                        key={index}
-                        sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}
-                    >
-                        <Typography
-                            sx={{ fontWeight: 700, fontSize: '1rem', color: 'text.primary', mb: 0.5 }}
-                        >
-                            {heading.text}
-                        </Typography>
 
-                        {FooterCategories[index].map((link: LinkFormat, i: number) => (
-                            <Link
-                                href={link.url}
-                                key={i}
-                                sx={{
-                                    color: 'text.primary',
-                                    fontSize: '0.875rem',
-                                    fontWeight: 400,
-                                    width: 'fit-content',
-                                    '&:hover': { textDecoration: 'none' },
-                                }}
-                            >
-                                {link.text}
-                            </Link>
-                        ))}
-                    </Box>
-                ))}
-            </Box>
+            {/* Footer Links */}
+            <FooterLinks headings={FooterHeadings} categories={FooterCategories} />
 
             {/* Social Media + App badges */}
-            <Box
-                sx={{
-                    position: 'relative',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: 3,
-                }}
-            >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Box sx={{ ...flexBetween, position: 'relative', flexWrap: 'wrap', gap: 3 }}>
+                <Box sx={{ ...flexAlignCenter, gap: 1.5 }}>
                     {SocialMediaLinks.map((icon: SocialMediaFormat, index: number) =>
                         <Link
                             href={icon?.url}
@@ -75,7 +49,7 @@ function Footer ()
                     )}
                 </Box>
 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Box sx={{ ...flexAlignCenter, gap: 1.5 }}>
                     <Link href={IconAppleStore?.url} sx={{ display: 'inline-flex' }}>
                         <Box component="img" src={IconAppleStore.icon} alt="Download on the App Store" sx={{ height: 40, width: 'auto' }} />
                     </Link>
@@ -106,7 +80,7 @@ function Footer ()
             <Divider sx={{ my: 4 }} />
 
             {/* Bottom bar */}
-            <Typography sx={{ fontSize: '0.8125rem', color: 'text.secondary' }}>
+            <Typography variant="body2">
                 © {new Date().getFullYear()} Flight Centre Travel Group Limited. All rights reserved.
             </Typography>
           </Container>

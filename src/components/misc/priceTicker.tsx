@@ -1,5 +1,10 @@
+//MUI
 import { Box, Divider, Typography } from "@mui/material"
 
+/*
+    Optional parameters to help align text whilst re-using the same component across
+    different variants of component display.
+*/
 interface PriceTickerProps
 {
     text: string
@@ -8,6 +13,19 @@ interface PriceTickerProps
     hAlign?: "left" | "center" | "right"
 }
 
+
+
+/*
+    This component is the white price ticker as seen on FlightCentre's website. The design of the component
+    is custom, using MUI base components with heavy custom styling. A white box with rounded corners is created,
+    a horiztonal line divider is then applied and then two vertical short dividers to give the look of a ticker
+    flap.
+
+    A type was used (PriceTickerProps) as the placement of text within each ticker component is dependent on
+    whether it is a number or words. The alignment options were thus made optional and applied where neccesary.
+
+    The exact text given to each one of these components is dictated in the parent component (explained there).
+*/
 function PriceTicker({ text, label = false, vAlign, hAlign }: PriceTickerProps)
 {
     const verticalAlign = vAlign ?? (label ? "top" : "center");
@@ -25,7 +43,7 @@ function PriceTicker({ text, label = false, vAlign, hAlign }: PriceTickerProps)
                 overflow: "hidden",
             }}
         >
-            {/* split-flap seam spanning the full width of the tile */}
+            {/* FlightCentre 'split-flap' ticker design using dividers */}
             <Divider
                 sx={{
                     position: "absolute",
