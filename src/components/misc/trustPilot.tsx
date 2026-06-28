@@ -1,17 +1,39 @@
-import { Typography, Box, Container } from "@mui/material"
+import { Typography, Box } from "@mui/material"
 import { TrustPilotStars, TrustPilotLogo } from "../../constants/constants"
 
 function TrustPilot ()
 {
     return(
-        <Container>
-            <Box sx={{ display: "flex", alignItems: "center"}}>
-                <Typography>Excellent</Typography>
-                <img src={TrustPilotStars.path} alt="trust pilot stars" height={40} width={40}></img>
-                <Typography>4.6 out of 5</Typography>
-                <img src={TrustPilotLogo.path} alt="trust pilot logo" height={40} width={40}></img>
-            </Box>
-        </Container>
+        <Box
+            sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: 1,
+                py: 2,
+                bgcolor: "accent.main",
+            }}
+        >
+            <Typography sx={{ fontWeight: 700, fontSize: "0.9375rem", lineHeight: 1, color: "text.primary" }}>
+                Excellent
+            </Typography>
+            <Box
+                component="img"
+                src={TrustPilotStars.path}
+                alt="Trustpilot rating: 4.6 out of 5 stars"
+                sx={{ height: 28, width: "auto", display: "block" }}
+            />
+            <Typography sx={{ fontSize: "0.8125rem", lineHeight: 1, color: "text.secondary" }}>
+                <Box component="span" sx={{ fontWeight: 700 }}>4.6</Box> out of 5 stars
+            </Typography>
+            <Box
+                component="img"
+                src={TrustPilotLogo.path}
+                alt="Trustpilot"
+                sx={{ height: 22, width: "auto", display: "block" }}
+            />
+        </Box>
     )
 }
 

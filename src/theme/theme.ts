@@ -1,5 +1,14 @@
 import { createTheme } from '@mui/material/styles';
 
+declare module '@mui/material/styles' {
+  interface Palette {
+    accent: Palette['primary'];
+  }
+  interface PaletteOptions {
+    accent?: PaletteOptions['primary'];
+  }
+}
+
 const theme = createTheme({
   palette: {
     mode: 'light',
@@ -21,12 +30,16 @@ const theme = createTheme({
     warning: { main: '#ed9a00' },
     success: { main: '#2e7d32' },
     info:    { main: '#0288d1' },
+    // offset accent surface (e.g. Trustpilot strip)
+    accent: {
+      main: '#f5f5f5',
+    },
     background: {
       default: '#ffffff',
       paper: '#f5f7fa',
     },
     text: {
-      primary: '#1a1a1a',
+      primary: '#212121',
       secondary: '#5a6b85',
     },
   },

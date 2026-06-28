@@ -33,7 +33,7 @@ import iconGooglePlay from '../assets/iconGooglePlay.svg';
 import iconInstagram from '../assets/iconInstagram.png';
 import iconLinkedIn from '../assets/iconLinkedin.png';
 import iconPinterest from '../assets/iconPinterest.png';
-import iconTickTok from '../assets/iconTicktok.png';
+import iconTickTok from '../assets/iconTiktok.svg';
 import iconYoutube from '../assets/iconYoutube.png';
 import iconAppleStore from '../assets/iconAppleStore.svg';
 import largeCaptainAvatar from '../assets/largeCaptainAvatar.png';
